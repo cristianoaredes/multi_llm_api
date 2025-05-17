@@ -1,4 +1,4 @@
-import 'package:api_dart/features/auth/data/models/refresh_token.dart';
+import 'package:multi_llm_api/features/auth/data/models/refresh_token.dart';
 import 'package:postgres/postgres.dart';
 
 /// Repository interface for [RefreshToken] entities.

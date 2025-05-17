@@ -1,9 +1,9 @@
-import 'package:api_dart/features/auth/data/repositories/in_memory_refresh_token_repository.dart';
-import 'package:api_dart/features/auth/data/repositories/in_memory_user_repository.dart';
-import 'package:api_dart/features/auth/domain/auth_service.dart';
-import 'package:api_dart/features/auth/domain/auth_service_interface.dart';
-import 'package:api_dart/features/auth/domain/interfaces/i_refresh_token_repository.dart';
-import 'package:api_dart/features/auth/domain/interfaces/i_user_repository.dart';
+import 'package:multi_llm_api/features/auth/data/repositories/in_memory_refresh_token_repository.dart';
+import 'package:multi_llm_api/features/auth/data/repositories/in_memory_user_repository.dart';
+import 'package:multi_llm_api/features/auth/domain/auth_service.dart';
+import 'package:multi_llm_api/features/auth/domain/auth_service_interface.dart';
+import 'package:multi_llm_api/features/auth/domain/interfaces/i_refresh_token_repository.dart';
+import 'package:multi_llm_api/features/auth/domain/interfaces/i_user_repository.dart';
 import 'package:get_it/get_it.dart';
 import 'package:logging/logging.dart';
 

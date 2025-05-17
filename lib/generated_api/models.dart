@@ -3,21 +3,20 @@
 
 /// Error response model.
 class ApiError {
-  final String code;
-  final String message;
-  
   ApiError({
     required this.code,
     required this.message,
   });
-  
+
   factory ApiError.fromJson(Map<String, dynamic> json) {
     return ApiError(
       code: json['code'] as String? ?? 'UNKNOWN_ERROR',
       message: json['message'] as String? ?? 'An unknown error occurred',
     );
   }
-  
+  final String code;
+  final String message;
+
   Map<String, dynamic> toJson() {
     return {
       'code': code,
@@ -28,21 +27,20 @@ class ApiError {
 
 /// Login request model.
 class LoginRequest {
-  final String username;
-  final String password;
-  
   LoginRequest({
     required this.username,
     required this.password,
   });
-  
+
   factory LoginRequest.fromJson(Map<String, dynamic> json) {
     return LoginRequest(
       username: json['username'] as String,
       password: json['password'] as String,
     );
   }
-  
+  final String username;
+  final String password;
+
   Map<String, dynamic> toJson() {
     return {
       'username': username,
@@ -53,18 +51,17 @@ class LoginRequest {
 
 /// Login response model.
 class LoginResponse {
-  final String token;
-  
   LoginResponse({
     required this.token,
   });
-  
+
   factory LoginResponse.fromJson(Map<String, dynamic> json) {
     return LoginResponse(
       token: json['token'] as String,
     );
   }
-  
+  final String token;
+
   Map<String, dynamic> toJson() {
     return {
       'token': token,
@@ -74,16 +71,12 @@ class LoginResponse {
 
 /// Register request model.
 class RegisterRequest {
-  final String username;
-  final String password;
-  final String? role;
-  
   RegisterRequest({
     required this.username,
     required this.password,
     this.role,
   });
-  
+
   factory RegisterRequest.fromJson(Map<String, dynamic> json) {
     return RegisterRequest(
       username: json['username'] as String,
@@ -91,7 +84,10 @@ class RegisterRequest {
       role: json['role'] as String?,
     );
   }
-  
+  final String username;
+  final String password;
+  final String? role;
+
   Map<String, dynamic> toJson() {
     return {
       'username': username,
@@ -103,16 +99,12 @@ class RegisterRequest {
 
 /// User response model.
 class UserResponse {
-  final int id;
-  final String username;
-  final String role;
-  
   UserResponse({
     required this.id,
     required this.username,
     required this.role,
   });
-  
+
   factory UserResponse.fromJson(Map<String, dynamic> json) {
     return UserResponse(
       id: json['id'] as int,
@@ -120,7 +112,10 @@ class UserResponse {
       role: json['role'] as String,
     );
   }
-  
+  final int id;
+  final String username;
+  final String role;
+
   Map<String, dynamic> toJson() {
     return {
       'id': id,
@@ -132,16 +127,12 @@ class UserResponse {
 
 /// Item model.
 class Item {
-  final int? id;
-  final String name;
-  final String? description;
-  
   Item({
     this.id,
     required this.name,
     this.description,
   });
-  
+
   factory Item.fromJson(Map<String, dynamic> json) {
     return Item(
       id: json['id'] as int?,
@@ -149,7 +140,10 @@ class Item {
       description: json['description'] as String?,
     );
   }
-  
+  final int? id;
+  final String name;
+  final String? description;
+
   Map<String, dynamic> toJson() {
     return {
       if (id != null) 'id': id,
@@ -161,21 +155,20 @@ class Item {
 
 /// Create item request model.
 class CreateItemRequest {
-  final String name;
-  final String? description;
-  
   CreateItemRequest({
     required this.name,
     this.description,
   });
-  
+
   factory CreateItemRequest.fromJson(Map<String, dynamic> json) {
     return CreateItemRequest(
       name: json['name'] as String,
       description: json['description'] as String?,
     );
   }
-  
+  final String name;
+  final String? description;
+
   Map<String, dynamic> toJson() {
     return {
       'name': name,
@@ -186,21 +179,20 @@ class CreateItemRequest {
 
 /// Update item request model.
 class UpdateItemRequest {
-  final String? name;
-  final String? description;
-  
   UpdateItemRequest({
     this.name,
     this.description,
   });
-  
+
   factory UpdateItemRequest.fromJson(Map<String, dynamic> json) {
     return UpdateItemRequest(
       name: json['name'] as String?,
       description: json['description'] as String?,
     );
   }
-  
+  final String? name;
+  final String? description;
+
   Map<String, dynamic> toJson() {
     return {
       if (name != null) 'name': name,
@@ -211,18 +203,17 @@ class UpdateItemRequest {
 
 /// Transfer item request model.
 class TransferItemRequest {
-  final String newName;
-  
   TransferItemRequest({
     required this.newName,
   });
-  
+
   factory TransferItemRequest.fromJson(Map<String, dynamic> json) {
     return TransferItemRequest(
       newName: json['newName'] as String,
     );
   }
-  
+  final String newName;
+
   Map<String, dynamic> toJson() {
     return {
       'newName': newName,
@@ -232,14 +223,6 @@ class TransferItemRequest {
 
 /// Paginated items model.
 class PaginatedItems {
-  final List<Item>? items;
-  final int? page;
-  final int? pageSize;
-  final int? totalItems;
-  final int? totalPages;
-  final bool? hasNextPage;
-  final bool? hasPreviousPage;
-  
   PaginatedItems({
     this.items,
     this.page,
@@ -249,7 +232,7 @@ class PaginatedItems {
     this.hasNextPage,
     this.hasPreviousPage,
   });
-  
+
   factory PaginatedItems.fromJson(Map<String, dynamic> json) {
     return PaginatedItems(
       items: (json['items'] as List<dynamic>?)
@@ -263,7 +246,14 @@ class PaginatedItems {
       hasPreviousPage: json['hasPreviousPage'] as bool?,
     );
   }
-  
+  final List<Item>? items;
+  final int? page;
+  final int? pageSize;
+  final int? totalItems;
+  final int? totalPages;
+  final bool? hasNextPage;
+  final bool? hasPreviousPage;
+
   Map<String, dynamic> toJson() {
     return {
       if (items != null) 'items': items!.map((e) => e.toJson()).toList(),
@@ -279,18 +269,17 @@ class PaginatedItems {
 
 /// Generate text request model.
 class GenerateTextRequest {
-  final String prompt;
-  
   GenerateTextRequest({
     required this.prompt,
   });
-  
+
   factory GenerateTextRequest.fromJson(Map<String, dynamic> json) {
     return GenerateTextRequest(
       prompt: json['prompt'] as String,
     );
   }
-  
+  final String prompt;
+
   Map<String, dynamic> toJson() {
     return {
       'prompt': prompt,
@@ -300,18 +289,17 @@ class GenerateTextRequest {
 
 /// Generate text response model.
 class GenerateTextResponse {
-  final String text;
-  
   GenerateTextResponse({
     required this.text,
   });
-  
+
   factory GenerateTextResponse.fromJson(Map<String, dynamic> json) {
     return GenerateTextResponse(
       text: json['text'] as String,
     );
   }
-  
+  final String text;
+
   Map<String, dynamic> toJson() {
     return {
       'text': text,

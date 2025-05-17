@@ -6,9 +6,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: api_dart
+    container_name: multi_llm_api
     ports:
-      - "8081:8080"
+      - "8080:8080"
     environment:
       - DART_ENV=development
       - SERVER_PORT=8080
@@ -27,12 +27,8 @@ services:
 
   # PostgreSQL database
   postgres:
-    image: postgres:15-alpine
-    container_name: api_dart_postgres
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: api_dart_dev
+    image: postgres:14
+    container_name: multi_llm_api_postgres
     ports:
       - "5432:5432"
     volumes:
@@ -45,8 +41,8 @@ services:
 
   # Redis for caching
   redis:
-    image: redis:7-alpine
-    container_name: api_dart_redis
+    image: redis:7
+    container_name: multi_llm_api_redis
     ports:
       - "6379:6379"
     volumes:
@@ -57,10 +53,10 @@ services:
 
   # Adminer for database management
   adminer:
-    image: adminer:latest
-    container_name: api_dart_adminer
+    image: adminer
+    container_name: multi_llm_api_adminer
     ports:
-      - "8082:8080"
+      - "8081:8080"
     environment:
       ADMINER_DEFAULT_SERVER: postgres
     depends_on:
@@ -70,11 +66,11 @@ services:
     restart: unless-stopped
 
   # Swagger UI for API documentation
-  swagger-ui:
-    image: swaggerapi/swagger-ui:latest
-    container_name: api_dart_swagger
+  swagger:
+    image: swaggerapi/swagger-ui
+    container_name: multi_llm_api_swagger
     ports:
-      - "8083:8080"
+      - "8082:8080"
     environment:
       API_URL: /openapi.yaml
       BASE_URL: /

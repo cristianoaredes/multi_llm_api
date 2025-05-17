@@ -1,7 +1,7 @@
 import 'dart:convert'; // dart:async was unused
 
-import 'package:api_dart/core/error/app_exception.dart';
-import 'package:api_dart/core/presentation/dtos/error_response_dto.dart';
+import 'package:multi_llm_api/core/error/app_exception.dart';
+import 'package:multi_llm_api/core/presentation/dtos/error_response_dto.dart';
 import 'package:logging/logging.dart';
 import 'package:shelf/shelf.dart';
 

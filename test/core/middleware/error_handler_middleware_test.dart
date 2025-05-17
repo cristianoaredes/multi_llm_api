@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:api_dart/core/error/app_exception.dart';
-import 'package:api_dart/core/error/error_handler_middleware.dart';
-import 'package:api_dart/core/presentation/dtos/error_response_dto.dart';
+import 'package:multi_llm_api/core/error/app_exception.dart';
+import 'package:multi_llm_api/core/error/error_handler_middleware.dart';
+import 'package:multi_llm_api/core/presentation/dtos/error_response_dto.dart';
 import 'package:shelf/shelf.dart';
 import 'package:test/test.dart';
 

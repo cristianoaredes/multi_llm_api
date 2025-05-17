@@ -1,4 +1,4 @@
-import 'package:api_dart/core/error/app_exception.dart';
+import 'package:multi_llm_api/core/error/app_exception.dart';
 
 /// DTO for chat continuation requests.
 class ChatRequestDto {

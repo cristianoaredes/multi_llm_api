@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:api_dart/core/server/server_setup.dart';
+import 'package:multi_llm_api/core/server/server_setup.dart';
 import 'package:shelf/shelf_io.dart' as io;
 
 /// Starts a test server for integration tests.

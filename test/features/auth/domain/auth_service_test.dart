@@ -1,9 +1,9 @@
-import 'package:api_dart/core/error/app_exception.dart';
-import 'package:api_dart/features/auth/data/models/refresh_token.dart';
-import 'package:api_dart/features/auth/data/models/user.dart';
-import 'package:api_dart/features/auth/domain/auth_service.dart';
-import 'package:api_dart/features/auth/domain/interfaces/i_refresh_token_repository.dart';
-import 'package:api_dart/features/auth/domain/interfaces/i_user_repository.dart';
+import 'package:multi_llm_api/core/error/app_exception.dart';
+import 'package:multi_llm_api/features/auth/data/models/refresh_token.dart';
+import 'package:multi_llm_api/features/auth/data/models/user.dart';
+import 'package:multi_llm_api/features/auth/domain/auth_service.dart';
+import 'package:multi_llm_api/features/auth/domain/interfaces/i_refresh_token_repository.dart';
+import 'package:multi_llm_api/features/auth/domain/interfaces/i_user_repository.dart';
 import 'package:postgres/postgres.dart';
 import 'package:test/test.dart';
 

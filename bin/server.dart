@@ -1,9 +1,9 @@
 import 'dart:io';
-import 'package:api_dart/core/config/db_config.dart';
-import 'package:api_dart/core/config/env_config.dart';
-import 'package:api_dart/core/di/injector.dart';
-import 'package:api_dart/core/logging/log_config.dart';
-import 'package:api_dart/core/server/server_setup.dart';
+import 'package:multi_llm_api/core/config/db_config.dart';
+import 'package:multi_llm_api/core/config/env_config.dart';
+import 'package:multi_llm_api/core/di/injector.dart';
+import 'package:multi_llm_api/core/logging/log_config.dart';
+import 'package:multi_llm_api/core/server/server_setup.dart';
 import 'package:logging/logging.dart';
 import 'package:shelf/shelf_io.dart' as io;
 

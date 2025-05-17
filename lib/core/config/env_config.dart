@@ -202,7 +202,7 @@ class EnvConfig {
 
   /// Gets the database name from environment variables
   static String get dbName {
-    return _dotenv['DB_NAME'] ?? 'api_dart';
+    return _dotenv['DB_NAME'] ?? 'multi_llm_api';
   }
 
   /// Gets the database username from environment variables
