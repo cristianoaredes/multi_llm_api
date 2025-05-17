@@ -1,0 +1,13 @@
+include: package:very_good_analysis/analysis_options.yaml
+
+linter:
+  rules:
+    # Add custom rules or disable rules here if needed
+    # Example:
+    # public_member_api_docs: false
+    # lines_longer_than_80_chars: false
+
+# Optional: Configure analyzer settings
+# analyzer:
+#  errors:
+#    some_error_code: ignore 

@@ -1,0 +1,450 @@
+openapi: 3.1.0
+info:
+  title: API Dart Example
+  description: API de exemplo em Dart com autenticação JWT e geração de texto.
+  version: 1.0.0
+servers:
+  - url: http://localhost:8081/api/v1
+    description: Development server
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
+        status:
+          type: integer
+          description: HTTP status code
+    LoginRequest:
+      type: object
+      required:
+        - username
+        - password
+      properties:
+        username:
+          type: string
+          description: Username for authentication
+        password:
+          type: string
+          description: User password
+    LoginResponse:
+      type: object
+      properties:
+        token:
+          type: string
+          description: JWT token for authentication
+    RegisterRequest:
+      type: object
+      required:
+        - username
+        - password
+      properties:
+        username:
+          type: string
+          description: Username for registration
+        password:
+          type: string
+          description: User password
+        role:
+          type: string
+          description: User role (default is 'user')
+          enum: [user, admin]
+    UserResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: User ID
+        username:
+          type: string
+          description: Username
+        role:
+          type: string
+          description: User role
+    GenerateTextRequest:
+      type: object
+      required:
+        - prompt
+      properties:
+        prompt:
+          type: string
+          description: Prompt for text generation
+    GenerateTextResponse:
+      type: object
+      properties:
+        text:
+          type: string
+          description: Generated text
+    ChatRequest:
+      type: object
+      required:
+        - newMessage
+      properties:
+        history:
+          type: array
+          items:
+            type: object
+            properties:
+              role:
+                type: string
+                enum: [user, model]
+              text:
+                type: string
+          description: Chat history
+        newMessage:
+          type: string
+          description: New message to send
+    ChatResponse:
+      type: object
+      properties:
+        text:
+          type: string
+          description: Response message
+    ModelInfo:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the model being used
+        config:
+          type: object
+          properties:
+            model:
+              type: string
+              description: Model identifier
+            maxTokens:
+              type: integer
+              description: Maximum number of tokens for generation
+            temperature:
+              type: number
+              format: float
+              description: Temperature parameter for generation
+            isAvailable:
+              type: boolean
+              description: Whether the model is available
+            cacheStats:
+              type: object
+              properties:
+                textCacheSize:
+                  type: integer
+                  description: Number of entries in the text cache
+                chatCacheSize:
+                  type: integer
+                  description: Number of entries in the chat cache
+    CacheClearResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Whether the cache was cleared successfully
+        message:
+          type: string
+          description: Status message
+paths:
+  /health:
+    get:
+      summary: Health check
+      description: Check if the API is running
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: OK
+  /auth/login:
+    post:
+      summary: User login
+      description: Authenticate a user and get a JWT token
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+      responses:
+        '200':
+          description: Successful login
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Invalid credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /auth/register:
+    post:
+      summary: User registration
+      description: Register a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterRequest'
+      responses:
+        '201':
+          description: User registered successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict (e.g., username already exists)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /auth/verify:
+    get:
+      summary: Verify token
+      description: Verify a JWT token and get user information
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Valid token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+        '401':
+          description: Invalid token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /generate/text:
+    post:
+      summary: Generate text
+      description: Generate text based on a prompt using Gemini
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenerateTextRequest'
+      responses:
+        '200':
+          description: Successful text generation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenerateTextResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error / Gemini API error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /generate/stream/text:
+    post:
+      summary: Stream generated text
+      description: Stream generated text based on a prompt using Gemini (Server-Sent Events)
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenerateTextRequest'
+      responses:
+        '200':
+          description: Successful text generation stream
+          content:
+            text/event-stream:
+              schema:
+                type: string
+                description: Stream of text chunks
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error / Gemini API error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /generate/chat:
+    post:
+      summary: Chat with Gemini
+      description: Send a message and get a response from Gemini
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChatRequest'
+      responses:
+        '200':
+          description: Successful chat response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChatResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error / Gemini API error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /generate/stream/chat:
+    post:
+      summary: Stream chat with Gemini
+      description: Stream chat responses from Gemini (Server-Sent Events)
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChatRequest'
+      responses:
+        '200':
+          description: Successful chat stream
+          content:
+            text/event-stream:
+              schema:
+                type: string
+                description: Stream of chat message chunks
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error / Gemini API error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /generate/info:
+    get:
+      summary: Get Generative Model Info
+      description: Retrieve information about the configured generative model and cache.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Model and cache information retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelInfo'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /generate/cache/clear:
+    post:
+      summary: Clear Generative Cache
+      description: Clears the cache for generative AI responses (text and chat).
+      security:
+        - bearerAuth: [] # or admin-only if implemented
+      responses:
+        '200':
+          description: Cache cleared successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CacheClearResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+security:
+  - bearerAuth: []
+
+tags:
+  - name: Auth
+    description: Authentication endpoints
+  - name: Generative
+    description: Generative AI endpoints
+  - name: Health
+    description: Health check endpoints

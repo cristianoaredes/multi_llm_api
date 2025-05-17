@@ -1,0 +1,36 @@
+# Arquivos e diretórios específicos do Dart
+.dart_tool/
+.packages
+build/
+pubspec.lock
+
+# Diretório de pacotes do pub
+.pub/
+
+# Diretório de cobertura de testes
+coverage/
+
+# Arquivos de ambiente
+.env
+.env.development
+.env.production
+.env.test
+
+# Arquivos específicos do IDE
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+
+# Logs
+*.log
+
+# Cache
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+
+# Outros
+.DS_Store
+Thumbs.db 

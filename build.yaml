@@ -1,0 +1,61 @@
+# Build runner target configuration
+targets:
+  $default:
+    builders:
+      swagger_dart_code_generator:
+        enabled: true
+        options:
+          # Comprehensive configuration for swagger_dart_code_generator
+          input_folder: "openapi/"
+          output_folder: "lib/generated_api/"
+          input_urls:
+            - "openapi/openapi.yaml"
+          
+          # Code generation options
+          use_inheritance: true
+          use_default_null_for_lists: false
+          build_only_models: false
+          separate_models: true
+          enums_case_sensitive: true
+          ignore_headers: false
+          use_required_attribute_for_headers: true
+          include_if_null: false
+          
+          # Response options
+          use_path_for_request_names: true
+          generate_convert_to_from_json: true
+          
+          # Naming options
+          use_enum_extension: true
+          cut_from_model_names:
+            - "Dto"
+          
+          # Documentation options
+          with_base_url: true
+          with_converter: true
+          
+          # Type mapping options
+          type_mappings:
+            - date_time:DateTime
+            - string:String
+            - integer:int
+            - boolean:bool
+            - array:List
+            - file:MultipartFile
+          
+          # Response type options
+          response_override_value_map:
+            - url: "/health"
+              method: get
+              overridden_value: "String"
+            - url: "/items"
+              method: get
+              overridden_value: "PaginatedItems"
+          
+          # Class name options
+          class_name_mappings:
+            - Error:ApiError
+          
+          # Additional options
+          exclude_paths:
+            - "/health"

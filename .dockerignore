@@ -1,0 +1,59 @@
+# Version control
+.git
+.gitignore
+.github
+
+# Dart/Flutter
+.dart_tool/
+.packages
+build/
+.pub-cache/
+.pub/
+coverage/
+.test_coverage.dart
+.test_runner.dart
+
+# IDE files
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+.DS_Store
+
+# Environment files (we'll copy them explicitly in the Dockerfile)
+# .env*
+
+# Documentation
+README.md
+CHANGELOG.md
+LICENSE
+docs/
+
+# Test files
+test/
+integration_test/
+
+# Docker files (to avoid recursive copying)
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+tmp/
+temp/
+
+# Generated files
+*.g.dart
+*.freezed.dart
+*.mocks.dart
+*.reflectable.dart
+
+# Other
+.coverage/
+.flutter-plugins
+.flutter-plugins-dependencies

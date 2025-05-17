@@ -1,0 +1,56 @@
+name: Dart CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup Dart
+      uses: dart-lang/setup-dart@v1
+      with:
+        sdk: 'stable'
+    
+    - name: Install dependencies
+      run: dart pub get
+    
+    - name: Verify formatting
+      run: dart format --output=none --set-exit-if-changed .
+    
+    - name: Analyze project source
+      run: dart analyze
+    
+    - name: Run tests with coverage
+      run: |
+        dart pub global activate coverage
+        dart test --coverage=coverage
+        dart pub global run coverage:format_coverage --lcov --in=coverage --out=coverage/lcov.info --report-on=lib
+    
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v3
+      with:
+        file: coverage/lcov.info
+        fail_ci_if_error: true
+    
+    - name: Check coverage threshold
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y lcov
+        COVERAGE=$(lcov --summary coverage/lcov.info 2>&1 | grep "lines" | awk '{print $2}')
+        COVERAGE_NUM=$(echo $COVERAGE | sed 's/%//')
+        MIN_COVERAGE=80.0
+        echo "Current coverage: $COVERAGE"
+        echo "Minimum required: $MIN_COVERAGE%"
+        if (( $(echo "$COVERAGE_NUM < $MIN_COVERAGE" | bc -l) )); then
+          echo "Coverage is below the minimum threshold of $MIN_COVERAGE%"
+          exit 1
+        else
+          echo "Coverage meets the minimum threshold of $MIN_COVERAGE%"
+        fi

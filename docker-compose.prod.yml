@@ -1,0 +1,105 @@
+version: '3.8'
+
+services:
+  # API service
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: api-dart:latest
+    container_name: api_dart_prod
+    ports:
+      - "8080:8080"
+    environment:
+      - DART_ENV=production
+      - SERVER_PORT=8080
+      # These environment variables override the ones in .env.production
+      # Uncomment and set values as needed
+      # - GEMINI_API_KEY=your_api_key
+      # - JWT_SECRET=your_jwt_secret
+      # - DB_HOST=postgres
+      # - DB_PORT=5432
+      # - DB_NAME=api_dart_prod
+      # - DB_USERNAME=postgres
+      # - DB_PASSWORD=secure_password
+    volumes:
+      # Mount OpenAPI specification for Swagger UI
+      - ./openapi:/app/openapi
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - api_network
+    restart: always
+    # Health check to ensure the API is running properly
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # PostgreSQL database
+  postgres:
+    image: postgres:15-alpine
+    container_name: api_dart_postgres_prod
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: secure_password
+      POSTGRES_DB: api_dart_prod
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      # Initialize database with schema
+      - ./scripts/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
+    networks:
+      - api_network
+    restart: always
+    # Health check to ensure the database is running properly
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  # Redis for caching
+  redis:
+    image: redis:7-alpine
+    container_name: api_dart_redis_prod
+    volumes:
+      - redis_data:/data
+    networks:
+      - api_network
+    restart: always
+    # Health check to ensure Redis is running properly
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  # Nginx for reverse proxy and SSL termination
+  nginx:
+    image: nginx:alpine
+    container_name: api_dart_nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./nginx/ssl:/etc/nginx/ssl
+      - ./nginx/logs:/var/log/nginx
+    depends_on:
+      - api
+    networks:
+      - api_network
+    restart: always
+
+networks:
+  api_network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  redis_data:
