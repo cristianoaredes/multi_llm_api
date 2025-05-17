@@ -46,7 +46,7 @@ void main() {
       MockEnvConfig.setEnvValues({
         'SERVER_PORT': '9090',
         'LOG_LEVEL': 'WARNING',
-        'GEMINI_API_KEY': 'test_api_key_1234',
+        'GEMINI_API_KEY': 'fake_test_key_1234',
       });
     });
 
@@ -59,13 +59,13 @@ void main() {
     });
 
     test('geminiApiKey returns correct API key', () {
-      expect(MockEnvConfig.geminiApiKey, equals('test_api_key_1234'));
+      expect(MockEnvConfig.geminiApiKey, equals('fake_test_key_1234'));
     });
 
     test('serverPort returns default value', () {
       MockEnvConfig.setEnvValues({
         'LOG_LEVEL': 'INFO',
-        'GEMINI_API_KEY': 'test_api_key_1234',
+        'GEMINI_API_KEY': 'fake_test_key_1234',
       });
 
       expect(MockEnvConfig.serverPort, equals(8080));
@@ -74,13 +74,14 @@ void main() {
     test('logLevel returns default value', () {
       MockEnvConfig.setEnvValues({
         'SERVER_PORT': '9090',
-        'GEMINI_API_KEY': 'test_api_key_1234',
+        'GEMINI_API_KEY': 'fake_test_key_1234',
       });
 
       expect(MockEnvConfig.logLevel, equals(Level.INFO));
     });
 
-    test('geminiApiKey throws when not defined', () { // Shortened
+    test('geminiApiKey throws when not defined', () {
+      // Shortened
       MockEnvConfig.setEnvValues({
         'SERVER_PORT': '9090',
         'LOG_LEVEL': 'INFO',
@@ -89,7 +90,8 @@ void main() {
       expect(() => MockEnvConfig.geminiApiKey, throwsStateError);
     });
 
-    test('geminiApiKey throws for default value', () { // Shortened
+    test('geminiApiKey throws for default value', () {
+      // Shortened
       MockEnvConfig.setEnvValues({
         'SERVER_PORT': '9090',
         'LOG_LEVEL': 'INFO',
@@ -106,7 +108,7 @@ void main() {
       await tempFile.writeAsString('''
 SERVER_PORT=9595
 LOG_LEVEL=FINE
-GEMINI_API_KEY=real_test_key_5678
+GEMINI_API_KEY=fake_test_key_for_file_tests
 ''');
 
       // Faz backup do arquivo .env original
@@ -127,15 +129,17 @@ GEMINI_API_KEY=real_test_key_5678
         // Testa valores
         expect(EnvConfig.serverPort, equals(9595));
         expect(EnvConfig.logLevel, equals(Level.FINE));
-        expect(EnvConfig.geminiApiKey, equals('real_test_key_5678'));
+        expect(EnvConfig.geminiApiKey, equals('fake_test_key_for_file_tests'));
       } finally {
         // Limpa os arquivos temporários (Use sync in finally)
-        if (tempFile.existsSync()) { // Use sync
+        if (tempFile.existsSync()) {
+          // Use sync
           tempFile.deleteSync(); // Use sync
         }
 
         // Restaura o arquivo .env original (Use sync in finally)
-        if (backupFile.existsSync()) { // Use sync
+        if (backupFile.existsSync()) {
+          // Use sync
           backupFile.renameSync('.env'); // Use sync
         } // Add trailing comma
       }
