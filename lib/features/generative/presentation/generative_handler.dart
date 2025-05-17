@@ -9,6 +9,7 @@ import 'package:api_dart/features/generative/presentation/dtos/chat_request_dto.
 import 'package:api_dart/features/generative/presentation/dtos/chat_response_dto.dart'; // Import Chat DTOs
 import 'package:api_dart/features/generative/presentation/dtos/generate_text_request_dto.dart';
 import 'package:api_dart/features/generative/presentation/dtos/generate_text_response_dto.dart';
+import 'package:api_dart/features/generative/presentation/dtos/model_info_dto.dart';
 import 'package:shelf/shelf.dart';
 import 'package:shelf_router/shelf_router.dart';
 
@@ -31,6 +32,80 @@ class GenerativeHandler {
 
         return Response.ok(
           jsonEncode(modelInfo),
+          headers: {'Content-Type': 'application/json'},
+        );
+      })
+
+      // GET /generate/models
+      ..get('/models', (Request request) async {
+        // Lista estática de modelos disponíveis para demonstração
+        // Em uma implementação real, isso viria de um serviço
+        final models = [
+          ModelInfoDto(
+            id: 'gemini-1.5-flash',
+            name: 'Gemini 1.5 Flash',
+            provider: 'gemini',
+            description:
+                'Modelo rápido e eficiente do Google para tarefas gerais',
+            capabilities: ['text-generation', 'chat', 'streaming'],
+            maxTokens: 2048,
+            temperature: 0.7,
+            defaultModel: true,
+          ),
+          ModelInfoDto(
+            id: 'gemini-1.5-pro',
+            name: 'Gemini 1.5 Pro',
+            provider: 'gemini',
+            description:
+                'Modelo avançado do Google com maior contexto e capacidades',
+            capabilities: [
+              'text-generation',
+              'chat',
+              'streaming',
+              'long-context'
+            ],
+            maxTokens: 8192,
+            temperature: 0.7,
+          ),
+          ModelInfoDto(
+            id: 'gpt-4o',
+            name: 'GPT-4o',
+            provider: 'openrouter',
+            description:
+                'O mais recente modelo da OpenAI com capacidades multimodais',
+            capabilities: [
+              'text-generation',
+              'chat',
+              'streaming',
+              'multimodal'
+            ],
+            maxTokens: 4096,
+            temperature: 0.7,
+          ),
+          ModelInfoDto(
+            id: 'claude-3-opus',
+            name: 'Claude 3 Opus',
+            provider: 'openrouter',
+            description: 'Modelo mais poderoso da Anthropic',
+            capabilities: [
+              'text-generation',
+              'chat',
+              'streaming',
+              'long-context'
+            ],
+            maxTokens: 4096,
+            temperature: 0.7,
+          ),
+        ];
+
+        final response = ModelsListDto(
+          models: models,
+          totalCount: models.length,
+          defaultModelId: 'gemini-1.5-flash',
+        );
+
+        return Response.ok(
+          jsonEncode(response.toJson()),
           headers: {'Content-Type': 'application/json'},
         );
       })

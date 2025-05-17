@@ -47,6 +47,9 @@ class ValidationConfig {
       '/api/v1/generate/chat/stream': {
         'POST': ChatRequestDto.fromJson,
       },
+      '/api/v1/generate/models': {
+        // Endpoint GET não requer validação, pois não tem corpo
+      },
     };
   }
 }
