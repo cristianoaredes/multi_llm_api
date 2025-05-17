@@ -1,7 +1,7 @@
 # 🚀 MultiLLM API
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Status: WIP](https://img.shields.io/badge/Status-WIP-yellow.svg)](https://github.com/seu-usuario/multi-llm-api)
+[![Status: WIP](https://img.shields.io/badge/Status-WIP-yellow.svg)](https://github.com/cristianoaredes/multi-llm-api)
 [![Dart Version](https://img.shields.io/badge/Dart-3.0%2B-blue)](https://dart.dev)
 [![Docker](https://img.shields.io/badge/Docker-Supported-blue?logo=docker)](https://www.docker.com/)
 
@@ -67,7 +67,7 @@ multi-llm-api/
 1. **Clone o repositório**
 
 ```bash
-git clone https://github.com/seu-usuario/multi-llm-api.git
+git clone https://github.com/cristianoaredes/multi-llm-api.git
 cd multi-llm-api
 ```
 
@@ -261,6 +261,51 @@ Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICE
 - A comunidade Dart por fornecer excelentes ferramentas
 - Todos os contribuidores que ajudaram a melhorar este projeto
 
+## 🔍 Palavras-chave
+
+`dart` `api` `llm` `generative-ai` `chatgpt` `gemini` `claude` `jwt` `rest-api` `streaming` `docker` `postgresql` `shelf` `openapi` `swagger` `security` `sanitization` `middleware` `clean-architecture` `feature-first` `dependency-injection`
+
+## 📊 Métricas do Projeto
+
+![GitHub stars](https://img.shields.io/github/stars/cristianoaredes/multi-llm-api?style=social)
+![GitHub forks](https://img.shields.io/github/forks/cristianoaredes/multi-llm-api?style=social)
+![GitHub issues](https://img.shields.io/github/issues/cristianoaredes/multi-llm-api?style=social)
+
+## 🤝 Mantenedores
+
+| [**Cristiano Aredes**](https://github.com/cristianoaredes) |
+| ---------------------------------------------------------- |
+
+## 📫 Contato
+
+Para sugestões, dúvidas ou contribuições:
+
+* 📧 Email: cristiano@aredes.me
+* 💼 LinkedIn: [Cristiano Aredes](https://www.linkedin.com/in/cristianoaredes/)
+
+## ⭐ Mostre seu apoio
+
+Se este projeto te ajudou de alguma forma, considere:
+
+* ⭐ Dar uma estrela no GitHub
+* 🐛 Reportar bugs ou sugerir melhorias em Issues
+* 🔀 Fazer um fork e contribuir com o projeto
+* 📢 Compartilhar com outros desenvolvedores
+
+## 📝 Citação
+
+Se você usar este projeto como referência em artigos ou estudos, por favor cite:
+
+```bibtex
+@software{multi_llm_api,
+  author = {Cristiano Aredes},
+  title = {MultiLLM API - Gateway para Múltiplos Modelos de Linguagem},
+  year = {2024},
+  publisher = {GitHub},
+  url = {https://github.com/cristianoaredes/multi-llm-api}
+}
+```
+
 ---
 
-⭐ **Gostou deste projeto? Dê uma estrela!** ⭐
+ Feito com ❤️ por Cristiano Aredes 
