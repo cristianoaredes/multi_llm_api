@@ -233,7 +233,7 @@ eventSource.onmessage = (event) => {
 - [x] Middleware de sanitização
 - [x] Streaming de respostas
 - [x] Configurações de segurança
-- [ ] Completar a renomeação do pacote de 'api_dart' para 'multi_llm_api' em todos os arquivos
+- [x] Completar a renomeação do pacote de 'api_dart' para 'multi_llm_api' em todos os arquivos
 - [ ] Implementar sistema de fallback entre modelos
 - [ ] Suporte a prompts multimodais (imagens, áudio)
 - [ ] Implementar cache distribuído
@@ -263,4 +263,4 @@ Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICE
 
 ---
 
-⭐ **Gostou deste projeto? Dê uma estrela!** ⭐
+⭐ **Gostou deste projeto? Dê uma estrela!** ⭐# multi_llm_api
