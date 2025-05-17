@@ -1,5 +1,5 @@
-import 'package:api_dart/core/config/env_config.dart';
-import 'package:api_dart/core/error/app_exception.dart';
+import 'package:multi_llm_api/core/config/env_config.dart';
+import 'package:multi_llm_api/core/error/app_exception.dart';
 import 'package:logging/logging.dart';
 import 'package:postgres/postgres.dart';
 

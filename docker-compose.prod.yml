@@ -2,12 +2,12 @@ version: '3.8'
 
 services:
   # API service
-  api:
+  app:
     build:
       context: .
       dockerfile: Dockerfile
     image: api-dart:latest
-    container_name: api_dart_prod
+    container_name: multi_llm_api_prod
     ports:
       - "8080:8080"
     environment:
@@ -19,7 +19,7 @@ services:
       # - JWT_SECRET=your_jwt_secret
       # - DB_HOST=postgres
       # - DB_PORT=5432
-      # - DB_NAME=api_dart_prod
+      # - DB_NAME=multi_llm_api_prod
       # - DB_USERNAME=postgres
       # - DB_PASSWORD=secure_password
     volumes:
@@ -41,12 +41,8 @@ services:
 
   # PostgreSQL database
   postgres:
-    image: postgres:15-alpine
-    container_name: api_dart_postgres_prod
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: secure_password
-      POSTGRES_DB: api_dart_prod
+    image: postgres:14
+    container_name: multi_llm_api_postgres_prod
     volumes:
       - postgres_data:/var/lib/postgresql/data
       # Initialize database with schema
@@ -61,11 +57,15 @@ services:
       timeout: 5s
       retries: 5
       start_period: 10s
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: multi_llm_api_prod
 
   # Redis for caching
   redis:
-    image: redis:7-alpine
-    container_name: api_dart_redis_prod
+    image: redis:7
+    container_name: multi_llm_api_redis_prod
     volumes:
       - redis_data:/data
     networks:
@@ -82,7 +82,7 @@ services:
   # Nginx for reverse proxy and SSL termination
   nginx:
     image: nginx:alpine
-    container_name: api_dart_nginx
+    container_name: multi_llm_api_nginx
     ports:
       - "80:80"
       - "443:443"
@@ -91,7 +91,7 @@ services:
       - ./nginx/ssl:/etc/nginx/ssl
       - ./nginx/logs:/var/log/nginx
     depends_on:
-      - api
+      - app
     networks:
       - api_network
     restart: always
