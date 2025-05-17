@@ -55,7 +55,7 @@ Once the services are running, you can access them at the following URLs:
   - Server: postgres
   - Username: postgres
   - Password: postgres
-  - Database: api_dart_dev
+  - Database: multi_llm_api_dev
 
 ### Stopping the Development Environment
 
@@ -217,7 +217,7 @@ jobs:
 ### Common Issues
 
 1. **Container fails to start**:
-   - Check the logs: `docker logs api_dart`
+   - Check the logs: `docker logs multi_llm_api`
    - Verify environment variables are set correctly
    - Ensure the database is accessible
 
@@ -232,7 +232,7 @@ jobs:
 
 ### Useful Commands
 
-- View logs: `docker logs api_dart`
-- Enter container shell: `docker exec -it api_dart /bin/bash`
+- View logs: `docker logs multi_llm_api`
+- Enter container shell: `docker exec -it multi_llm_api /bin/bash`
 - Check container status: `docker ps -a`
 - Check container resource usage: `docker stats`

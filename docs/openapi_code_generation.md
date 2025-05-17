@@ -69,7 +69,7 @@ dart run build_runner build --delete-conflicting-outputs
 The generated API client can be used to make requests to the API:
 
 ```dart
-import 'package:api_dart/generated_api/api.dart';
+import 'package:multi_llm_api/generated_api/api.dart';
 
 void main() async {
   final api = ApiClient(baseUrl: 'http://localhost:8081/api/v1');
@@ -93,7 +93,7 @@ void main() async {
 The generated models can be used for request and response objects:
 
 ```dart
-import 'package:api_dart/generated_api/models.dart';
+import 'package:multi_llm_api/generated_api/models.dart';
 
 // Create a request model
 final createItemRequest = CreateItemRequest(

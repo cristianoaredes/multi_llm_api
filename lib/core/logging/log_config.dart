@@ -1,6 +1,6 @@
 import 'dart:io'; // Import for stdout/stderr
 
-import 'package:api_dart/core/config/env_config.dart'; // Use package import
+import 'package:multi_llm_api/core/config/env_config.dart'; // Use package import
 import 'package:logging/logging.dart';
 
 

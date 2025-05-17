@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:api_dart/core/config/env_config.dart';
-import 'package:api_dart/core/di/injector.dart';
+import 'package:multi_llm_api/core/config/env_config.dart';
+import 'package:multi_llm_api/core/di/injector.dart';
 import 'package:http/http.dart' as http;
 import 'package:test/test.dart';
 

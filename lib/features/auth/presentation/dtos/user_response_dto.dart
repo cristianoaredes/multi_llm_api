@@ -1,4 +1,4 @@
-import 'package:api_dart/features/auth/data/models/user.dart';
+import 'package:multi_llm_api/features/auth/data/models/user.dart';
 
 /// {@template user_response_dto}
 /// Data Transfer Object for user responses.

@@ -55,6 +55,12 @@
   - [x] Adicionar tipos de exceção mais específicos
   - [x] Implementar log de erros adequado com níveis de severidade
 
+- [x] **Renomeação do Pacote:**
+  - [x] Atualizar nome do pacote de 'api_dart' para 'multi_llm_api' no pubspec.yaml
+  - [x] Atualizar todas as importações em arquivos .dart
+  - [x] Atualizar referências em arquivos de configuração
+  - [x] Atualizar o nome do banco de dados padrão e outros identificadores internos
+
 - [x] **Expansão de Testes:**
   - [x] Escrever testes unitários para todos os serviços
   - [x] Escrever testes unitários para repositórios

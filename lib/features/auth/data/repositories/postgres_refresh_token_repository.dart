@@ -1,7 +1,7 @@
-import 'package:api_dart/core/config/db_config.dart';
-import 'package:api_dart/core/error/app_exception.dart';
-import 'package:api_dart/features/auth/data/models/refresh_token.dart';
-import 'package:api_dart/features/auth/domain/interfaces/i_refresh_token_repository.dart';
+import 'package:multi_llm_api/core/config/db_config.dart';
+import 'package:multi_llm_api/core/error/app_exception.dart';
+import 'package:multi_llm_api/features/auth/data/models/refresh_token.dart';
+import 'package:multi_llm_api/features/auth/domain/interfaces/i_refresh_token_repository.dart';
 import 'package:logging/logging.dart';
 import 'package:postgres/postgres.dart';
 

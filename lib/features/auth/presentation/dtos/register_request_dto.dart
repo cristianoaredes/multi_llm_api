@@ -1,4 +1,4 @@
-import 'package:api_dart/core/error/app_exception.dart';
+import 'package:multi_llm_api/core/error/app_exception.dart';
 
 /// {@template register_request_dto}
 /// Data Transfer Object for registration request payloads.
