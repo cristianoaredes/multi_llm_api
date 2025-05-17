@@ -275,11 +275,13 @@ Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICE
 
 | [**Cristiano Aredes**](https://github.com/cristianoaredes) |
 | ---------------------------------------------------------- |
+| Mobile Architect & AI Engineer - [aredes.me](https://aredes.me) |
 
 ## 📫 Contato
 
 Para sugestões, dúvidas ou contribuições:
 
+* 🌐 Site: [aredes.me](https://aredes.me)
 * 📧 Email: cristiano@aredes.me
 * 💼 LinkedIn: [Cristiano Aredes](https://www.linkedin.com/in/cristianoaredes/)
 
@@ -308,4 +310,4 @@ Se você usar este projeto como referência em artigos ou estudos, por favor cit
 
 ---
 
- Feito com ❤️ por Cristiano Aredes 
+ Feito com ❤️ por [Cristiano Aredes](https://aredes.me) 
