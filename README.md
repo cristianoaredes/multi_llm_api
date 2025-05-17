@@ -7,7 +7,7 @@
 
 Uma API backend robusta e escalável construída com Dart e o framework Shelf, projetada para servir como um gateway unificado para múltiplos modelos de linguagem (LLMs). Este projeto integra nativamente APIs como Google Gemini e OpenRouter, permitindo acesso padronizado a diversos modelos como GPT, Claude, Llama, etc.
 
-![MultiLLM API Banner](https://via.placeholder.com/1200x300/0175C2/FFFFFF?text=MultiLLM+API)
+![MultiLLM API Banner](assets/images/banner.png)
 
 > **⚠️ AVISO: Este projeto está em desenvolvimento ativo (WIP)**  
 > Funcionalidades podem mudar e a API ainda não é considerada estável para uso em produção.
