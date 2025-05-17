@@ -15,6 +15,7 @@ coverage/
 .env.development
 .env.production
 .env.test
+.env.*
 
 # Arquivos específicos do IDE
 .idea/
