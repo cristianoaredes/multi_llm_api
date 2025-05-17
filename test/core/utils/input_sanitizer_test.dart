@@ -1,4 +1,4 @@
-import 'package:api_dart/core/utils/input_sanitizer.dart';
+import 'package:multi_llm_api/core/utils/input_sanitizer.dart';
 import 'package:test/test.dart';
 
 void main() {

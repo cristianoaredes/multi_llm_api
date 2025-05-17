@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:api_dart/core/middleware/sanitization_middleware.dart';
+import 'package:multi_llm_api/core/middleware/sanitization_middleware.dart';
 import 'package:shelf/shelf.dart';
 import 'package:test/test.dart';
 
