@@ -1,7 +1,7 @@
-name: api_dart
-description: A simple Dart API example.
+name: multi_llm_api
+description: Um gateway unificado para múltiplos modelos de linguagem (LLMs) construído com Dart.
 version: 1.0.0
-# repository: https://github.com/my_org/my_repo
+# repository: https://github.com/seu-usuario/multi-llm-api
 
 environment:
   sdk: '>=3.0.0 <4.0.0'

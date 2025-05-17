@@ -1,23 +1,29 @@
-# 🚀 API Dart
+# 🚀 MultiLLM API
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Status: WIP](https://img.shields.io/badge/Status-WIP-yellow.svg)](https://github.com/seu-usuario/multi-llm-api)
 [![Dart Version](https://img.shields.io/badge/Dart-3.0%2B-blue)](https://dart.dev)
 [![Docker](https://img.shields.io/badge/Docker-Supported-blue?logo=docker)](https://www.docker.com/)
 
-Uma API backend robusta e escalável construída com Dart e o framework Shelf. Este projeto demonstra como criar uma API backend moderna com recursos avançados como autenticação JWT, integração com IA Generativa, validação de entrada, e containerização com Docker.
+Uma API backend robusta e escalável construída com Dart e o framework Shelf, projetada para servir como um gateway unificado para múltiplos modelos de linguagem (LLMs). Este projeto integra nativamente APIs como Google Gemini e OpenRouter, permitindo acesso padronizado a diversos modelos como GPT, Claude, Llama, etc.
 
-![API Dart Banner](https://via.placeholder.com/1200x300/0175C2/FFFFFF?text=API+Dart)
+![MultiLLM API Banner](https://via.placeholder.com/1200x300/0175C2/FFFFFF?text=MultiLLM+API)
+
+> **⚠️ AVISO: Este projeto está em desenvolvimento ativo (WIP)**  
+> Funcionalidades podem mudar e a API ainda não é considerada estável para uso em produção.
 
 ## ✨ Recursos
 
 - **Arquitetura feature-first** para código modular e organizado
+- **Gateway unificado para múltiplos LLMs**:
+  - Google Gemini API
+  - OpenRouter (acesso a OpenAI GPT, Anthropic Claude, Meta Llama, etc.)
+  - Interface padronizada para múltiplos provedores
+- **Streaming de respostas** em tempo real
+- **Sistema de fallback** entre provedores
 - **Autenticação completa com JWT**
-- **Integração com IA Generativa**:
-  - Google Gemini API com configurações de segurança
-  - Suporte opcional para OpenRouter (acesso a múltiplos modelos como OpenAI GPT, Claude)
-  - Streaming de respostas em tempo real
 - **Sistema de validação e sanitização** de entrada para proteger contra injeções
-- **PostgreSQL** para armazenamento de dados persistente
+- **PostgreSQL** para armazenamento de dados
 - **Cache** para otimização de performance
 - **Documentação OpenAPI/Swagger** integrada
 - **Configuração por ambiente** (desenvolvimento, produção, teste)
@@ -29,13 +35,25 @@ Uma API backend robusta e escalável construída com Dart e o framework Shelf. E
 A aplicação segue o padrão feature-first, promovendo separação de preocupações e modularidade:
 
 ```
-api-dart/
+multi-llm-api/
 ├── bin/              # Ponto de entrada da aplicação
 ├── lib/
 │   ├── core/         # Componentes centrais (config, DI, middleware, etc.)
+│   │   ├── config/   # Configurações da aplicação
+│   │   ├── di/       # Injeção de dependência
+│   │   ├── error/    # Tratamento de erros
+│   │   ├── logging/  # Configuração de logs
+│   │   ├── middleware/ # Middlewares da aplicação
+│   │   ├── server/   # Configuração do servidor
+│   │   └── utils/    # Utilitários
 │   ├── features/     # Módulos de funcionalidades
 │   │   ├── auth/     # Autenticação e autorização
+│   │   │   ├── data/     # Camada de dados
+│   │   │   ├── domain/   # Camada de domínio
+│   │   │   └── presentation/ # Camada de apresentação
 │   │   └── generative/ # IA Generativa
+│   │       ├── domain/   # Camada de domínio
+│   │       └── presentation/ # Camada de apresentação
 │   └── generated_api/ # Código gerado
 ├── openapi/          # Documentação da API
 ├── test/             # Testes
@@ -49,8 +67,8 @@ api-dart/
 1. **Clone o repositório**
 
 ```bash
-git clone https://github.com/seu-usuario/api-dart.git
-cd api-dart
+git clone https://github.com/seu-usuario/multi-llm-api.git
+cd multi-llm-api
 ```
 
 2. **Configure o ambiente**
@@ -106,6 +124,7 @@ dart run bin/server.dart
 
 ### IA Generativa
 
+- `GET /api/v1/generate/models` - Liste os modelos disponíveis
 - `POST /api/v1/generate/text` - Gere texto a partir de um prompt
 - `POST /api/v1/generate/text/stream` - Stream de texto gerado em tempo real
 - `POST /api/v1/generate/chat` - Continue uma conversa com IA
@@ -141,10 +160,18 @@ GEMINI_SAFETY_SEXUALLY_EXPLICIT=BLOCK_MEDIUM_AND_ABOVE
 GEMINI_SAFETY_DANGEROUS=BLOCK_MEDIUM_AND_ABOVE
 GEMINI_ENABLE_STREAMING=true
 
+# OpenRouter API
+OPENROUTER_API_KEY="sua_chave_api_openrouter"
+OPENROUTER_BASE_URL="https://openrouter.ai/api/v1"
+OPENROUTER_MODEL="openai/gpt-3.5-turbo"
+OPENROUTER_MAX_TOKENS=2048
+OPENROUTER_TEMPERATURE=0.7
+OPENROUTER_ENABLE_STREAMING=true
+
 # Database
 DB_HOST=localhost
 DB_PORT=5432
-DB_NAME=api_dart
+DB_NAME=multi_llm_api
 DB_USERNAME=postgres
 DB_PASSWORD=postgres
 ```
@@ -160,7 +187,7 @@ dart test
 Para ver a cobertura de testes:
 
 ```bash
-dart run coverage:test_with_coverage
+dart run scripts/run_tests_with_coverage.sh
 ```
 
 ## 📚 Exemplos de Uso
@@ -171,7 +198,7 @@ dart run coverage:test_with_coverage
 curl -X POST http://localhost:8081/api/v1/generate/text \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer seu_token_jwt" \
-  -d '{"prompt": "Explique como fazer uma API em Dart"}'
+  -d '{"prompt": "Explique como fazer uma API em Dart", "model_id": "gemini-1.5-flash"}'
 ```
 
 ### Streaming de Chat
@@ -194,18 +221,35 @@ eventSource.onmessage = (event) => {
 - **PostgreSQL** para persistência
 - **JWT** para autenticação
 - **Google Gemini API** para IA generativa
+- **OpenRouter** para acesso a múltiplos LLMs
 - **OpenAPI/Swagger** para documentação
 - **Docker** para containerização
+
+## 🔄 Roteiro de Desenvolvimento
+
+- [x] Integração com Google Gemini
+- [x] Integração com OpenRouter
+- [x] Autenticação JWT
+- [x] Middleware de sanitização
+- [x] Streaming de respostas
+- [x] Configurações de segurança
+- [ ] Implementar sistema de fallback entre modelos
+- [ ] Suporte a prompts multimodais (imagens, áudio)
+- [ ] Implementar cache distribuído
+- [ ] Melhorar a documentação da API
 
 ## 🤝 Contribuindo
 
 Contribuições são bem-vindas! Por favor, siga estes passos:
 
-1. Faça um fork do repositório
-2. Crie uma nova branch (`git checkout -b feature/nova-funcionalidade`)
-3. Faça commit das suas mudanças (`git commit -m 'Adiciona nova funcionalidade'`)
-4. Envie para a branch (`git push origin feature/nova-funcionalidade`)
-5. Abra um Pull Request
+1. Verifique os issues abertos ou abra um novo descrevendo sua contribuição
+2. Faça um fork do repositório
+3. Crie uma nova branch (`git checkout -b feature/nova-funcionalidade`)
+4. Faça commit das suas mudanças (`git commit -m 'feat: adiciona nova funcionalidade'`)
+5. Envie para a branch (`git push origin feature/nova-funcionalidade`)
+6. Abra um Pull Request
+
+Este projeto segue o fluxo de trabalho GitFlow e usa o padrão de commits convencionais.
 
 ## 📄 Licença
 
