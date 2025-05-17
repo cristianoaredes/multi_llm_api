@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:api_dart/core/config/env_config.dart';
+import 'package:multi_llm_api/core/config/env_config.dart';
 import 'package:logging/logging.dart';
 import 'package:test/test.dart';
 // import 'package:dotenv/dotenv.dart'; // Unused import removed

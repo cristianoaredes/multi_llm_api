@@ -1,10 +1,10 @@
 import 'dart:convert';
 
-import 'package:api_dart/core/di/injector.dart';
-import 'package:api_dart/core/error/app_exception.dart';
-import 'package:api_dart/core/middleware/auth_middleware.dart' as auth;
-import 'package:api_dart/features/auth/data/models/user.dart';
-import 'package:api_dart/features/auth/domain/auth_service_interface.dart';
+import 'package:multi_llm_api/core/di/injector.dart';
+import 'package:multi_llm_api/core/error/app_exception.dart';
+import 'package:multi_llm_api/core/middleware/auth_middleware.dart' as auth;
+import 'package:multi_llm_api/features/auth/data/models/user.dart';
+import 'package:multi_llm_api/features/auth/domain/auth_service_interface.dart';
 import 'package:shelf/shelf.dart';
 import 'package:test/test.dart';
 

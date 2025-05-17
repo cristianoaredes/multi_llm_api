@@ -1,6 +1,6 @@
-import 'package:api_dart/core/di/injector.dart';
-import 'package:api_dart/core/error/app_exception.dart';
-import 'package:api_dart/features/auth/domain/auth_service_interface.dart';
+import 'package:multi_llm_api/core/di/injector.dart';
+import 'package:multi_llm_api/core/error/app_exception.dart';
+import 'package:multi_llm_api/features/auth/domain/auth_service_interface.dart';
 import 'package:shelf/shelf.dart';
 
 // List of paths *relative to the API base* that do not require authentication

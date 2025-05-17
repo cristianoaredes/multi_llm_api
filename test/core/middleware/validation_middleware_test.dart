@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:api_dart/core/error/app_exception.dart';
-import 'package:api_dart/core/middleware/validation_middleware.dart';
+import 'package:multi_llm_api/core/error/app_exception.dart';
+import 'package:multi_llm_api/core/middleware/validation_middleware.dart';
 import 'package:shelf/shelf.dart';
 import 'package:test/test.dart';
 

@@ -1,13 +1,13 @@
 # 🚀 MultiLLM API
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Status: WIP](https://img.shields.io/badge/Status-WIP-yellow.svg)](https://github.com/seu-usuario/multi-llm-api)
+[![Status: WIP](https://img.shields.io/badge/Status-WIP-yellow.svg)](https://github.com/cristianoaredes/multi-llm-api)
 [![Dart Version](https://img.shields.io/badge/Dart-3.0%2B-blue)](https://dart.dev)
 [![Docker](https://img.shields.io/badge/Docker-Supported-blue?logo=docker)](https://www.docker.com/)
 
 Uma API backend robusta e escalável construída com Dart e o framework Shelf, projetada para servir como um gateway unificado para múltiplos modelos de linguagem (LLMs). Este projeto integra nativamente APIs como Google Gemini e OpenRouter, permitindo acesso padronizado a diversos modelos como GPT, Claude, Llama, etc.
 
-![MultiLLM API Banner](https://via.placeholder.com/1200x300/0175C2/FFFFFF?text=MultiLLM+API)
+![MultiLLM API Banner](assets/images/banner.png)
 
 > **⚠️ AVISO: Este projeto está em desenvolvimento ativo (WIP)**  
 > Funcionalidades podem mudar e a API ainda não é considerada estável para uso em produção.
@@ -67,7 +67,7 @@ multi-llm-api/
 1. **Clone o repositório**
 
 ```bash
-git clone https://github.com/seu-usuario/multi-llm-api.git
+git clone https://github.com/cristianoaredes/multi-llm-api.git
 cd multi-llm-api
 ```
 
@@ -261,6 +261,57 @@ Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICE
 - A comunidade Dart por fornecer excelentes ferramentas
 - Todos os contribuidores que ajudaram a melhorar este projeto
 
----
+## 🔍 Palavras-chave
+
+`dart` `api` `llm` `generative-ai` `chatgpt` `gemini` `claude` `jwt` `rest-api` `streaming` `docker` `postgresql` `shelf` `openapi` `swagger` `security` `sanitization` `middleware` `clean-architecture` `feature-first` `dependency-injection`
+
+## 📊 Métricas do Projeto
+
+![GitHub stars](https://img.shields.io/github/stars/cristianoaredes/multi-llm-api?style=social)
+![GitHub forks](https://img.shields.io/github/forks/cristianoaredes/multi-llm-api?style=social)
+![GitHub issues](https://img.shields.io/github/issues/cristianoaredes/multi-llm-api?style=social)
+
+## 🤝 Mantenedores
+
+| [**Cristiano Aredes**](https://github.com/cristianoaredes) |
+| ---------------------------------------------------------- |
+| Mobile Architect & AI Engineer - [aredes.me](https://aredes.me) |
+
+## 📫 Contato
+
+Para sugestões, dúvidas ou contribuições:
+
+* 🌐 Site: [aredes.me](https://aredes.me)
+* 📧 Email: cristiano@aredes.me
+* 💼 LinkedIn: [Cristiano Aredes](https://www.linkedin.com/in/cristianoaredes/)
+
+## ⭐ Mostre seu apoio
+
+Se este projeto te ajudou de alguma forma, considere:
+
+* ⭐ Dar uma estrela no GitHub
+* 🐛 Reportar bugs ou sugerir melhorias em Issues
+* 🔀 Fazer um fork e contribuir com o projeto
+* 📢 Compartilhar com outros desenvolvedores
+
+## 📝 Citação
+
+Se você usar este projeto como referência em artigos ou estudos, por favor cite:
+
+```bibtex
+@software{multi_llm_api,
+  author = {Cristiano Aredes},
+  title = {MultiLLM API - Gateway para Múltiplos Modelos de Linguagem},
+  year = {2024},
+  publisher = {GitHub},
+  url = {https://github.com/cristianoaredes/multi-llm-api}
+}
+```
+
+
+
+ Feito com ❤️ por [Cristiano Aredes](https://aredes.me) 
+
 
 ⭐ **Gostou deste projeto? Dê uma estrela!** ⭐# multi_llm_api
+

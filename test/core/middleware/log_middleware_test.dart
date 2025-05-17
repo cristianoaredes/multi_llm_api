@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:api_dart/core/logging/log_middleware.dart';
+import 'package:multi_llm_api/core/logging/log_middleware.dart';
 import 'package:logging/logging.dart';
 import 'package:shelf/shelf.dart';
 import 'package:test/test.dart';

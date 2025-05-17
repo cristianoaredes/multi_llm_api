@@ -1,4 +1,4 @@
-import 'package:api_dart/core/error/app_exception.dart'; // Use package import
+import 'package:multi_llm_api/core/error/app_exception.dart'; // Use package import
 
 /// {@template generate_text_request_dto}
 /// Data Transfer Object for text generation request payloads.

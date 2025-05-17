@@ -1,9 +1,9 @@
-import 'package:api_dart/core/middleware/validation_middleware.dart';
-import 'package:api_dart/features/auth/presentation/dtos/login_request_dto.dart';
-import 'package:api_dart/features/auth/presentation/dtos/refresh_token_request_dto.dart';
-import 'package:api_dart/features/auth/presentation/dtos/register_request_dto.dart';
-import 'package:api_dart/features/generative/presentation/dtos/chat_request_dto.dart';
-import 'package:api_dart/features/generative/presentation/dtos/generate_text_request_dto.dart';
+import 'package:multi_llm_api/core/middleware/validation_middleware.dart';
+import 'package:multi_llm_api/features/auth/presentation/dtos/login_request_dto.dart';
+import 'package:multi_llm_api/features/auth/presentation/dtos/refresh_token_request_dto.dart';
+import 'package:multi_llm_api/features/auth/presentation/dtos/register_request_dto.dart';
+import 'package:multi_llm_api/features/generative/presentation/dtos/chat_request_dto.dart';
+import 'package:multi_llm_api/features/generative/presentation/dtos/generate_text_request_dto.dart';
 
 /// Configuration for request validation.
 ///

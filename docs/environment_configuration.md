@@ -127,7 +127,7 @@ The application behavior changes based on the environment:
 The `EnvConfig` class provides access to environment variables and environment-specific behavior:
 
 ```dart
-import 'package:api_dart/core/config/env_config.dart';
+import 'package:multi_llm_api/core/config/env_config.dart';
 
 // Get the current environment
 final env = EnvConfig.environment;

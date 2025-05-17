@@ -1,13 +1,13 @@
 import 'dart:convert';
 
-import 'package:api_dart/core/di/injector.dart';
-import 'package:api_dart/core/error/app_exception.dart';
-import 'package:api_dart/features/auth/domain/auth_service_interface.dart';
-import 'package:api_dart/features/auth/presentation/dtos/login_request_dto.dart';
-import 'package:api_dart/features/auth/presentation/dtos/login_response_dto.dart';
-import 'package:api_dart/features/auth/presentation/dtos/refresh_token_request_dto.dart';
-import 'package:api_dart/features/auth/presentation/dtos/register_request_dto.dart';
-import 'package:api_dart/features/auth/presentation/dtos/user_response_dto.dart';
+import 'package:multi_llm_api/core/di/injector.dart';
+import 'package:multi_llm_api/core/error/app_exception.dart';
+import 'package:multi_llm_api/features/auth/domain/auth_service_interface.dart';
+import 'package:multi_llm_api/features/auth/presentation/dtos/login_request_dto.dart';
+import 'package:multi_llm_api/features/auth/presentation/dtos/login_response_dto.dart';
+import 'package:multi_llm_api/features/auth/presentation/dtos/refresh_token_request_dto.dart';
+import 'package:multi_llm_api/features/auth/presentation/dtos/register_request_dto.dart';
+import 'package:multi_llm_api/features/auth/presentation/dtos/user_response_dto.dart';
 import 'package:shelf/shelf.dart';
 import 'package:shelf_router/shelf_router.dart';
 

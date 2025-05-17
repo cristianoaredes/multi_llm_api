@@ -1,8 +1,8 @@
 import 'dart:async';
-import 'package:api_dart/core/config/env_config.dart';
-import 'package:api_dart/core/error/app_exception.dart';
-import 'package:api_dart/core/services/cache_service.dart';
-import 'package:api_dart/features/generative/domain/interfaces/i_generative_service.dart';
+import 'package:multi_llm_api/core/config/env_config.dart';
+import 'package:multi_llm_api/core/error/app_exception.dart';
+import 'package:multi_llm_api/core/services/cache_service.dart';
+import 'package:multi_llm_api/features/generative/domain/interfaces/i_generative_service.dart';
 import 'package:crypto/crypto.dart';
 import 'package:google_generative_ai/google_generative_ai.dart';
 import 'package:logging/logging.dart';

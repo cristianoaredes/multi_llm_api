@@ -267,63 +267,27 @@ group('FeatureService', () {
 - Inclua diagramas de arquitetura quando útil
 - Mantenha o README atualizado com instruções de execução
 
-## Renomeação do Pacote
+## Nomenclatura e Organização
 
-Para finalizar a transição do nome do pacote de `api_dart` para `multi_llm_api`, utilize um dos métodos abaixo:
+O projeto segue as seguintes convenções de nomenclatura:
 
-### Usando ferramentas da IDE
+- Pacote: `multi_llm_api` (anteriormente `api_dart`)
+- Features: singular (auth, generative, item)
+- Classes: PascalCase (AuthService, GenerativeHandler)
+- Métodos e Variáveis: camelCase (getUserById, refreshToken)
+- Constantes: SNAKE_CASE_MAIÚSCULO (API_VERSION, MAX_CONNECTIONS)
+- Arquivos: snake_case.dart (auth_service.dart, token_validator.dart)
 
-- No VSCode: Utilize "Find and Replace" com expressões regulares habilitadas
-  - Pesquise: `package:api_dart/`
-  - Substitua por: `package:multi_llm_api/`
-  - Marque a opção "Match Whole Word"
-  - Certifique-se de limitar a pesquisa a arquivos `.dart`
+## Transição de Nome do Pacote
 
-- No IntelliJ/Android Studio:
-  - Use o recurso "Rename Package" (Refactor > Rename)
-  - Configure para renomear todas as referências
+A renomeação do pacote de `api_dart` para `multi_llm_api` foi concluída em 28/05/2024.
 
-### Usando linha de comando
+Se você encontrar alguma referência ao nome antigo, por favor corrija-a usando:
 
-Para sistemas Unix/Linux/macOS:
-```bash
-find lib -type f -name "*.dart" -exec sed -i '' 's/package:api_dart\//package:multi_llm_api\//g' {} \;
-find test -type f -name "*.dart" -exec sed -i '' 's/package:api_dart\//package:multi_llm_api\//g' {} \;
-find bin -type f -name "*.dart" -exec sed -i '' 's/package:api_dart\//package:multi_llm_api\//g' {} \;
-```
-
-Para Windows (PowerShell):
-```powershell
-Get-ChildItem -Path lib,test,bin -Filter "*.dart" -Recurse | ForEach-Object {
-    (Get-Content $_.FullName) | ForEach-Object {
-        $_ -replace 'package:api_dart/', 'package:multi_llm_api/'
-    } | Set-Content $_.FullName
-}
-```
-
-### Verificação pós-renomeação
-
-Após a renomeação, execute os seguintes comandos para garantir que tudo foi alterado corretamente:
-
-1. Procure por referências remanescentes:
 ```bash
 grep -r "api_dart" --include="*.dart" .
 ```
 
-2. Execute o analisador para verificar problemas:
-```bash
-dart analyze
-```
-
-3. Execute os testes para garantir que nada quebrou:
-```bash
-dart test
-```
-
-4. Verifique se existe alguma referência ao nome antigo em:
-   - `pubspec.yaml`
-   - Comentários em arquivos de código
-   - Documentação
-   - Scripts de implantação
+Para detalhes sobre o processo de renomeação, consulte [docs/renomeacao_pacote.md](./renomeacao_pacote.md).
 
 > **Nota**: Esta operação deve ser tratada como uma única transação. Comite todas as alterações juntas para evitar problemas de compilação intermediários. 

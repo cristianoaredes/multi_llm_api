@@ -1,15 +1,15 @@
 import 'dart:async';
 import 'dart:convert';
 
-// Sorted Imports: dart:, package:api_dart, package:shelf
-import 'package:api_dart/core/di/injector.dart';
-import 'package:api_dart/core/error/app_exception.dart';
-import 'package:api_dart/features/generative/domain/interfaces/i_generative_service.dart';
-import 'package:api_dart/features/generative/presentation/dtos/chat_request_dto.dart'; // Import Chat DTOs
-import 'package:api_dart/features/generative/presentation/dtos/chat_response_dto.dart'; // Import Chat DTOs
-import 'package:api_dart/features/generative/presentation/dtos/generate_text_request_dto.dart';
-import 'package:api_dart/features/generative/presentation/dtos/generate_text_response_dto.dart';
-import 'package:api_dart/features/generative/presentation/dtos/model_info_dto.dart';
+// Sorted Imports: dart:, package:multi_llm_api, package:shelf
+import 'package:multi_llm_api/core/di/injector.dart';
+import 'package:multi_llm_api/core/error/app_exception.dart';
+import 'package:multi_llm_api/features/generative/domain/interfaces/i_generative_service.dart';
+import 'package:multi_llm_api/features/generative/presentation/dtos/chat_request_dto.dart'; // Import Chat DTOs
+import 'package:multi_llm_api/features/generative/presentation/dtos/chat_response_dto.dart'; // Import Chat DTOs
+import 'package:multi_llm_api/features/generative/presentation/dtos/generate_text_request_dto.dart';
+import 'package:multi_llm_api/features/generative/presentation/dtos/generate_text_response_dto.dart';
+import 'package:multi_llm_api/features/generative/presentation/dtos/model_info_dto.dart';
 import 'package:shelf/shelf.dart';
 import 'package:shelf_router/shelf_router.dart';
 

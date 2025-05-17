@@ -1,5 +1,5 @@
-import 'package:api_dart/features/auth/auth_injector.dart';
-import 'package:api_dart/features/generative/generative_injector.dart';
+import 'package:multi_llm_api/features/auth/auth_injector.dart';
+import 'package:multi_llm_api/features/generative/generative_injector.dart';
 import 'package:get_it/get_it.dart';
 
 /// Global instance of the GetIt service locator.
