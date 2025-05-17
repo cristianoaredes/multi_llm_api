@@ -265,4 +265,65 @@ group('FeatureService', () {
 - Mantenha a documentação OpenAPI/Swagger atualizada
 - Documente configurações e variáveis de ambiente
 - Inclua diagramas de arquitetura quando útil
-- Mantenha o README atualizado com instruções de execução 
+- Mantenha o README atualizado com instruções de execução
+
+## Renomeação do Pacote
+
+Para finalizar a transição do nome do pacote de `api_dart` para `multi_llm_api`, utilize um dos métodos abaixo:
+
+### Usando ferramentas da IDE
+
+- No VSCode: Utilize "Find and Replace" com expressões regulares habilitadas
+  - Pesquise: `package:api_dart/`
+  - Substitua por: `package:multi_llm_api/`
+  - Marque a opção "Match Whole Word"
+  - Certifique-se de limitar a pesquisa a arquivos `.dart`
+
+- No IntelliJ/Android Studio:
+  - Use o recurso "Rename Package" (Refactor > Rename)
+  - Configure para renomear todas as referências
+
+### Usando linha de comando
+
+Para sistemas Unix/Linux/macOS:
+```bash
+find lib -type f -name "*.dart" -exec sed -i '' 's/package:api_dart\//package:multi_llm_api\//g' {} \;
+find test -type f -name "*.dart" -exec sed -i '' 's/package:api_dart\//package:multi_llm_api\//g' {} \;
+find bin -type f -name "*.dart" -exec sed -i '' 's/package:api_dart\//package:multi_llm_api\//g' {} \;
+```
+
+Para Windows (PowerShell):
+```powershell
+Get-ChildItem -Path lib,test,bin -Filter "*.dart" -Recurse | ForEach-Object {
+    (Get-Content $_.FullName) | ForEach-Object {
+        $_ -replace 'package:api_dart/', 'package:multi_llm_api/'
+    } | Set-Content $_.FullName
+}
+```
+
+### Verificação pós-renomeação
+
+Após a renomeação, execute os seguintes comandos para garantir que tudo foi alterado corretamente:
+
+1. Procure por referências remanescentes:
+```bash
+grep -r "api_dart" --include="*.dart" .
+```
+
+2. Execute o analisador para verificar problemas:
+```bash
+dart analyze
+```
+
+3. Execute os testes para garantir que nada quebrou:
+```bash
+dart test
+```
+
+4. Verifique se existe alguma referência ao nome antigo em:
+   - `pubspec.yaml`
+   - Comentários em arquivos de código
+   - Documentação
+   - Scripts de implantação
+
+> **Nota**: Esta operação deve ser tratada como uma única transação. Comite todas as alterações juntas para evitar problemas de compilação intermediários. 
