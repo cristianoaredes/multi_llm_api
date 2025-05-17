@@ -1,4 +1,4 @@
-import 'package:api_dart/core/config/env_config.dart';
+import 'package:multi_llm_api/core/config/env_config.dart';
 
 /// Representa a configuração de um modelo de IA generativa.
 ///

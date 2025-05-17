@@ -1,7 +1,7 @@
-import 'package:api_dart/core/config/env_config.dart';
-import 'package:api_dart/features/generative/domain/generative_service.dart';
-import 'package:api_dart/features/generative/domain/interfaces/i_generative_service.dart';
-import 'package:api_dart/features/generative/domain/openrouter_service.dart';
+import 'package:multi_llm_api/core/config/env_config.dart';
+import 'package:multi_llm_api/features/generative/domain/generative_service.dart';
+import 'package:multi_llm_api/features/generative/domain/interfaces/i_generative_service.dart';
+import 'package:multi_llm_api/features/generative/domain/openrouter_service.dart';
 import 'package:get_it/get_it.dart';
 import 'package:logging/logging.dart';
 
