@@ -5,7 +5,7 @@ Todas as alterações notáveis deste projeto serão documentadas neste arquivo.
 O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.0/),
 e este projeto segue o [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
-## [Não Lançado]
+## [1.0.0] - 2023-08-01
 
 ### Adicionado
 - Configuração inicial do projeto
@@ -26,6 +26,8 @@ e este projeto segue o [Versionamento Semântico](https://semver.org/lang/pt-BR/
 - Testes unitários e de integração
 - Documentação OpenAPI/Swagger
 - Configuração Docker e Docker Compose
+- Suporte para múltiplos modelos de IA generativa
+- Endpoint de listagem de modelos disponíveis
 
 ### Alterado
 - Atualização do README com instruções detalhadas
